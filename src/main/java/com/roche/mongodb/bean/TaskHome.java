@@ -14,13 +14,17 @@ public class TaskHome {
 	private static final Logger logger = LoggerFactory.getLogger(TaskHome.class);
 
 	private Task task = new Task();
-	private List<Task> tasks;
+	private Iterable<Task> tasks;
 
-	@Autowired
-	private TaskDao taskDao;
+    private TaskRepository taskRepository;
 
-	
-	public String getMessage() {
+    @SuppressWarnings({"SpringJavaAutowiringInspection"})
+    @Autowired
+    public void setTaskRepository(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
+    }
+
+    public String getMessage() {
 		logger.debug("Returning message from task home bean");
 		return "Hello from Spring";
 	}	
@@ -30,7 +34,7 @@ public class TaskHome {
 	}
 
 	public void saveTask() {
-		taskDao.save(task);
+        taskRepository.save(task);
 		task = new Task();
 		invalidateTasks();
 	}
@@ -39,9 +43,9 @@ public class TaskHome {
 		tasks = null;
 	}
 
-	public List<Task> getTasks() {
+	public Iterable<Task> getTasks() {
 		if (tasks == null) {
-			tasks = taskDao.list();
+			tasks = taskRepository.findAll();
 		}
 		return tasks;
 		
