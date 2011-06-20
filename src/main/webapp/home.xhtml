@@ -20,9 +20,7 @@
 		<h:form>
 			<div
 				style="border-top: 1px solid #d0d0d0; margin-top: 12px; padding-top: 12px">
-				<h:inputText value="#{taskHome.task.description}" id="taskDesc">
-                    <f:validateBean disabled="true"/>
-                </h:inputText>
+				<h:inputText value="#{taskHome.task.description}" id="taskDesc" />
                 <h:commandButton action="#{taskHome.saveTask}" value="Add"/>
                 <h:message for="taskDesc" style="color : #ff0000; padding-left : 8px"/></div>
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AjcSettings">
-    <option name="ajcPath" value="$MAVEN_REPOSITORY$\org\aspectj\aspectjtools\1.6.11.RELEASE\aspectjtools-1.6.11.RELEASE.jar" />
+    <option name="ajcPath" value="D:/apache-maven-2.2.1/maven_repo/.m2/repository\org\aspectj\aspectjtools\1.6.11.RELEASE\aspectjtools-1.6.11.RELEASE.jar" />
     <option name="heapSize" value="128" />
     <option name="cmdLineParams" value="-target 1.6" />
   </component>
@@ -38,11 +38,12 @@
             <element id="library" level="project" name="Maven: org.springframework:spring-context:3.0.5.RELEASE" />
             <element id="library" level="project" name="Maven: org.mongodb:mongo-java-driver:2.5.3" />
             <element id="library" level="project" name="Maven: javax.validation:validation-api:1.0.0.GA" />
+            <element id="library" level="project" name="Maven: org.hibernate:hibernate-validator:4.1.0.Final" />
+            <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.5.10" />
             <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:3.0.5.RELEASE" />
             <element id="library" level="project" name="Maven: org.springframework:spring-context-support:3.0.5.RELEASE" />
             <element id="library" level="project" name="Maven: org.springframework:spring-web:3.0.5.RELEASE" />
             <element id="library" level="project" name="Maven: taglibs:standard:1.1.2" />
-            <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.5.10" />
             <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.5.10" />
             <element id="library" level="project" name="Maven: org.slf4j:slf4j-log4j12:1.5.10" />
             <element id="library" level="project" name="Maven: log4j:log4j:1.2.15" />
