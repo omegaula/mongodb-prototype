@@ -1,5 +1,6 @@
 package com.roche.mongodb.dynamicforms.template.web;
 
+import com.google.common.collect.Lists;
 import com.roche.mongodb.dynamicforms.template.model.FormTemplate;
 import com.roche.mongodb.dynamicforms.template.model.FormTemplateRepository;
 import org.bson.types.ObjectId;
@@ -10,12 +11,15 @@ import org.springframework.util.CollectionUtils;
 
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
+
+import static com.google.common.collect.Lists.newArrayList;
 
 @Component("formTemplateHome")
 public class FormTemplateHome {
 
     private FormTemplateRepository formTemplateRepo;
-    private Iterable<FormTemplate> templates;
+    private List<FormTemplate> templates;
     private FormTemplate template;
 
     @Autowired
@@ -48,9 +52,9 @@ public class FormTemplateHome {
         this.template = template;
     }
 
-    public Iterable<FormTemplate> getTemplates() {
+    public List<FormTemplate> getTemplates() {
         if (templates == null) {
-            templates = formTemplateRepo.findAll(sortByTemplateId());
+            templates = newArrayList(formTemplateRepo.findAll(sortByTemplateId()));
         }
         return templates;
     }

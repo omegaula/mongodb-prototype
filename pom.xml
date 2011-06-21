@@ -105,8 +105,14 @@
 			<scope>compile</scope>
 		</dependency>
 
+        <!-- Misc Dependencies -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>r09</version>
+        </dependency>
 
-		<!-- Test Dependencies -->
+        <!-- Test Dependencies -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

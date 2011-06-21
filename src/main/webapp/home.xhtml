@@ -6,14 +6,30 @@
 	template="/WEB-INF/templates/template.xhtml">
 	<ui:define name="content">
 		<h1><h:outputText value="Form Templates" /></h1>
-		<table>
-			<ui:repeat value="#{formTemplateHome.templates}" var="v_template">
-				<tr>
-					<td>#{v_template.templateId}</td>
-                    <td>#{v_template.templateLabel}</td>
-				</tr>
-			</ui:repeat>
-		</table>
+        <h:dataTable value="#{formTemplateHome.templates}" var="v_template">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Template ID"/>
+                </f:facet>
+                <h:outputText value="#{v_template.templateId}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Template Label" />
+                </f:facet>
+                <h:outputText value="#{v_template.templateLabel}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                </f:facet>
+                <h:outputText value="Edit" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                </f:facet>
+                <h:outputText value="Delete" />
+            </h:column>
+        </h:dataTable>
 
         <h:form id="templateAddForm">
             <h:commandLink value="Add" action="#{formTemplateHome.prepareAdd}"/>
