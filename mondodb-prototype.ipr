@@ -2,7 +2,7 @@
 <project version="4">
   <component name="AjcSettings">
     <option name="ajcPath" value="D:/apache-maven-2.2.1/maven_repo/.m2/repository\org\aspectj\aspectjtools\1.6.11.RELEASE\aspectjtools-1.6.11.RELEASE.jar" />
-    <option name="heapSize" value="128" />
+    <option name="heapSize" value="256" />
     <option name="cmdLineParams" value="-target 1.6" />
   </component>
   <component name="AntConfiguration">
@@ -184,6 +184,9 @@
     <option name="HEAP_SIZE" />
     <option name="LOCALE" />
     <option name="OPEN_IN_BROWSER" value="true" />
+  </component>
+  <component name="JsfProjectComponent">
+    <option name="faceletsSupport" value="ENABLED" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">

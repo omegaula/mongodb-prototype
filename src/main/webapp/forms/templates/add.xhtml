@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="content">
+		<h1><h:outputText value="add.xhtml: Add new template"/></h1>
+		<h:form id="templateAddForm">
+            <h:inputText name="templateId" value="#{formTemplateHome.template.templateId}" />
+            <h:inputText name="templateLabel" value="#{formTemplateHome.template.templateLabel}" />
+            <h:commandButton value="Add" action="#{formTemplateHome.add}"/>
+        </h:form>
+
+	</ui:define>
+</ui:composition>
