@@ -1,39 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	template="/WEB-INF/templates/template.xhtml">
-	<ui:define name="content">
-		<h1><h:outputText value="Form Templates" /></h1>
-        <h:dataTable value="#{formTemplateHome.templates}" var="v_template">
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Template ID"/>
-                </f:facet>
-                <h:outputText value="#{v_template.templateId}" />
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Template Label" />
-                </f:facet>
-                <h:outputText value="#{v_template.templateLabel}" />
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                </f:facet>
-                <h:outputText value="Edit" />
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                </f:facet>
-                <h:outputText value="Delete" />
-            </h:column>
-        </h:dataTable>
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/WEB-INF/templates/template.xhtml">
+    <ui:define name="content">
+        <h1><h:outputText value="Form Templates"/></h1>
+        <h:form id="templateEditDeleteForm">
+            <h:dataTable value="#{formTemplateHome.templates}" var="v_template" styleClass="dataTable" rowClasses="odd even">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Template ID"/>
+                    </f:facet>
+                    <h:outputText value="#{v_template.templateId}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Template Label"/>
+                    </f:facet>
+                    <h:outputText value="#{v_template.templateLabel}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                    </f:facet>
+                    <h:commandLink value="Edit" action="#{formTemplateHome.prepareEdit}">
+                        <f:param name="template.id" value="#{v_template.id}"/>
+                    </h:commandLink>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                    </f:facet>
+                    <h:commandLink value="Delete" action="#{formTemplateHome.delete}">
+                        <f:param name="template.id" value="#{v_template.id}"/>
+                    </h:commandLink>
+                </h:column>
+            </h:dataTable>
+        </h:form>
 
         <h:form id="templateAddForm">
             <h:commandLink value="Add" action="#{formTemplateHome.prepareAdd}"/>
         </h:form>
 
-	</ui:define>
+    </ui:define>
 </ui:composition>
