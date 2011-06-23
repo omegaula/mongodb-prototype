@@ -4,6 +4,9 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.document.mongodb.mapping.Document;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Template of the form: defines all sections and fields for the form.
  *
@@ -18,6 +21,8 @@ public class FormTemplate {
     private String templateId;
 
     private String templateLabel;
+
+    private List<Section> sections = new ArrayList<Section>();
 
     public ObjectId getId() {
         return id;
@@ -41,5 +46,21 @@ public class FormTemplate {
 
     public void setTemplateLabel(String templateLabel) {
         this.templateLabel = templateLabel;
+    }
+
+    /**
+     * Sorted list of sections for the template. Sections should be displayed in the order they are on the list.
+     * @return
+     */
+    public List<Section> getSections() {
+        return sections;
+    }
+
+    public void setSections(List<Section> sections) {
+        this.sections = sections;
+    }
+
+    public void addSection(Section section) {
+        this.sections.add(section);
     }
 }
