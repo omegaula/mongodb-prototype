@@ -33,8 +33,19 @@ public class FormTemplateHome {
         return "/forms/templates/add";
     }
 
-    public String add() {
+    public String prepareEdit(ObjectId id) {
+        template = formTemplateRepo.findOne(id);
+        return "/forms/templates/edit";
+    }
+
+    public String save() {
         formTemplateRepo.save(template);
+        clearView();
+        return "/home";
+    }
+
+    public String delete(ObjectId id) {
+        formTemplateRepo.delete(id);
         clearView();
         return "/home";
     }

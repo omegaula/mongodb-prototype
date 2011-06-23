@@ -66,6 +66,10 @@ body {
 	clear : both;
 }
 
+#templateAddForm {
+    margin: 5px;
+}
+
 .panel {
 	border: 1px solid #d0d0d0;
 	padding: 8px;
