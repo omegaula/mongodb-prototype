@@ -6,7 +6,7 @@ public class Field {
 
     private String label;
 
-    private FieldType type;
+    private FieldType type = FieldType.TEXT;
 
     public String getId() {
         return id;

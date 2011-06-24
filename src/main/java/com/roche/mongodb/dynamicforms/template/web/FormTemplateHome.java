@@ -19,8 +19,6 @@ public class FormTemplateHome {
     private FormTemplateRepository formTemplateRepo;
     private List<FormTemplate> templates;
     private FormTemplate template;
-    private Field field;
-    private boolean fieldEditingInProgress;
 
     @Autowired
     public void setFormTemplateRepository(FormTemplateRepository formTemplateRepo) {
@@ -45,46 +43,10 @@ public class FormTemplateHome {
         return "/home";
     }
 
-    public String showDetails(ObjectId id) {
-        template = formTemplateRepo.findOne(id);
-        return "/forms/templates/details";
-    }
-
     public String delete(ObjectId id) {
         formTemplateRepo.delete(id);
         clearView();
         return "/home";
-    }
-
-    public String prepareAddField(ObjectId id) {
-         field = new Field();
-         markFieldEditingStarted();
-         return "ajax";
-    }
-
-    public String addField(ObjectId id) {
-         markFieldEditingFinished();
-        return "ajax";
-    }
-
-    private void markFieldEditingFinished() {
-        this.fieldEditingInProgress = false;
-    }
-
-    private void markFieldEditingStarted() {
-         this.fieldEditingInProgress = true;
-    }
-
-    public boolean isFieldEditingInProgress() {
-        return fieldEditingInProgress;
-    }
-
-    public Field getField() {
-        return field;
-    }
-
-    public void setField(Field field) {
-        this.field = field;
     }
 
     private void clearView() {

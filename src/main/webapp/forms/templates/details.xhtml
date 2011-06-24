@@ -7,9 +7,9 @@
 	<ui:define name="content">
 		<h1><ui:insert name="title"/></h1>
 		<h:form id="templateDetailsForm">
-            <h1><h:outputText value="#{formTemplateHome.template.templateId}: #{formTemplateHome.template.templateLabel}" /></h1>
+            <h1><h:outputText value="#{formFieldHome.template.templateId}: #{formFieldHome.template.templateLabel}" /></h1>
 
-            <h:dataTable id="fieldList" value="#{formTemplateHome.template.sections[0].fields}" var="v_field" styleClass="dataTable">
+            <h:dataTable id="fieldList" value="#{formFieldHome.template.sections[0].fields}" var="v_field" styleClass="dataTable">
                 <f:facet name="header"><h:outputText value="Fields:" /></f:facet>
                 <h:column>
                     <f:facet name="header">
@@ -25,15 +25,16 @@
                 </h:column>
                 <f:facet name="footer">
                     <h:panelGroup layout="block" id="footerBlock">
-                        <h:commandLink value="Add field" action="#{formTemplateHome.prepareAddField(formTemplateHome.template.id)}"
-                                       rendered="#{!formTemplateHome.fieldEditingInProgress}">
+                        <h:commandLink value="Add field" action="#{formFieldHome.prepareAddField}"
+                                       rendered="#{!formFieldHome.fieldEditingInProgress}">
                             <f:ajax render="footerBlock" />
                         </h:commandLink>
-                        <h:panelGroup layout="block" rendered="#{formTemplateHome.fieldEditingInProgress}">
-                            fieldEditingInProgress :)
-                            <h:commandLink value="Stop editing" action="#{formTemplateHome.addField(formTemplateHome.template.id)}">
-                                <f:ajax render="fieldList" />
-                            </h:commandLink>
+                        <h:panelGroup layout="block" rendered="#{formFieldHome.fieldEditingInProgress}">
+                            <h:inputText label="Internal id" value="#{formFieldHome.field.id}" />
+                            <h:inputText label="Label" value="#{formFieldHome.field.label}" />
+                            <h:commandButton value="Add" action="#{formFieldHome.addField}">
+                                <f:ajax render="fieldList" execute="footerBlock" />
+                            </h:commandButton>
                         </h:panelGroup>
                     </h:panelGroup>
                 </f:facet>
