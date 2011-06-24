@@ -3,6 +3,9 @@ package com.roche.mongodb.dynamicforms.template.web;
 import com.roche.mongodb.dynamicforms.template.model.Field;
 import com.roche.mongodb.dynamicforms.template.model.FormTemplate;
 import com.roche.mongodb.dynamicforms.template.model.FormTemplateRepository;
+import com.roche.mongodb.dynamicforms.template.model.Section;
+import org.apache.commons.collections15.CollectionUtils;
+import org.apache.commons.collections15.Predicate;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -32,9 +35,20 @@ public class FormFieldHome {
     }
 
     public String addField() {
-        template.getSections().get(0).getFields().add(this.field);
+        getSection().getFields().add(this.field);
         formTemplateRepository.save(template);
         markFieldEditingFinished();
+        return "ajax";
+    }
+
+    public String deleteField(final String fieldId) {
+        CollectionUtils.filter(getSection().getFields(), new Predicate<Field>() {
+            @Override
+            public boolean evaluate(Field field) {
+                return !field.getId().equals(fieldId);
+            }
+        });
+        formTemplateRepository.save(template);
         return "ajax";
     }
 
@@ -48,6 +62,10 @@ public class FormFieldHome {
 
     public boolean isFieldEditingInProgress() {
         return fieldEditingInProgress;
+    }
+
+    private Section getSection() {
+        return template.getSections().get(0);
     }
 
     public Field getField() {
