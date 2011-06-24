@@ -24,6 +24,16 @@
                     <h:outputText value="#{v_field.label}" />
                 </h:column>
                 <h:column>
+                    <h:commandLink value="Up" action="#{formFieldHome.moveUp(v_field.id)}">
+                        <f:ajax render="@form" />
+                    </h:commandLink>
+                </h:column>
+                <h:column>
+                    <h:commandLink value="Down" action="#{formFieldHome.moveDown(v_field.id)}">
+                        <f:ajax render="@form" />
+                    </h:commandLink>
+                </h:column>
+                <h:column>
                     <h:commandLink value="Delete" action="#{formFieldHome.deleteField(v_field.id)}" >
                         <f:ajax render="@form" />
                     </h:commandLink>
@@ -44,7 +54,6 @@
                     </h:panelGroup>
                 </f:facet>
             </h:dataTable>
-            <ui:insert name="submitButton"/>
         </h:form>
 
 	</ui:define>

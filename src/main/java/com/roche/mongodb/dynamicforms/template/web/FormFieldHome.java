@@ -10,6 +10,8 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.faces.component.UIData;
+
 @Component("formFieldHome")
 public class FormFieldHome {
 
@@ -52,6 +54,32 @@ public class FormFieldHome {
         return "ajax";
     }
 
+    public String moveUp(String fieldId) {
+        int index = indexOfFieldWithId(fieldId);
+        Field field = getSection().getFields().remove(index);
+        getSection().getFields().add(index - 1, field);
+        formTemplateRepository.save(template);
+        return "ajax";
+    }
+
+    public String moveDown(String fieldId) {
+        int index = indexOfFieldWithId(fieldId);
+        Field field = getSection().getFields().remove(index);
+        getSection().getFields().add(index + 1, field);
+        formTemplateRepository.save(template);
+        return "ajax";
+    }
+
+    private int indexOfFieldWithId(String fieldId) {
+        for (int i = 0; i < getSection().getFields().size(); i++) {
+            Field field = getSection().getFields().get(i);
+            if (field.getId().equals(fieldId)) {
+                return i;
+            }
+        }
+        throw new IllegalStateException("There is no field with id "+fieldId);
+    }
+
     private void markFieldEditingFinished() {
         this.fieldEditingInProgress = false;
     }
@@ -79,4 +107,5 @@ public class FormFieldHome {
     public FormTemplate getTemplate() {
         return template;
     }
+
 }
