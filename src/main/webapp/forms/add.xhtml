@@ -9,6 +9,13 @@
 		<h:form id="entryAddForm">
             <h:inputText name="createdBy" value="#{formHome.entry.createdBy}" />
 
+            <ui:repeat value="#{formHome.template.sections}" var="section">
+                <ui:repeat value="#{section.fields}" var="field">
+                    <label for="#{field.id}">#{field.label}</label>
+                    <input type="text" id="#{field.id}" name="cs.#{field.id}" /><br/>
+                </ui:repeat>
+            </ui:repeat>
+
             <h:commandButton value="Add" action="#{formHome.add}" />
         </h:form>
 

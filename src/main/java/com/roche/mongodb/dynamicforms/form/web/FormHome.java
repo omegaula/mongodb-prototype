@@ -4,13 +4,17 @@ import com.roche.mongodb.dynamicforms.form.model.Form;
 import com.roche.mongodb.dynamicforms.form.model.FormRepository;
 import com.roche.mongodb.dynamicforms.template.model.FormTemplate;
 import com.roche.mongodb.dynamicforms.template.model.FormTemplateRepository;
+import org.apache.commons.collections15.MapUtils;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.document.mongodb.MongoTemplate;
 import org.springframework.data.document.mongodb.query.Query;
 import org.springframework.stereotype.Component;
 
+import javax.faces.context.FacesContext;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.springframework.data.document.mongodb.query.Criteria.where;
 import static org.springframework.data.document.mongodb.query.Query.query;
@@ -53,7 +57,15 @@ public class FormHome {
     }
 
     public String add() {
-        mongoTemplate.save(entry, template.getTemplateId());
+        Map<String,String> parameterMap = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+        HashMap<String, String> newMap = new HashMap<String, String>();
+        for (Map.Entry<String, String> entry : parameterMap.entrySet()) {
+            if (entry.getKey().startsWith("cs.")) {
+                newMap.put(entry.getKey().substring(3), entry.getValue());
+            }
+        }
+        newMap.put("createdBy", entry.getCreatedBy());
+        mongoTemplate.save(newMap, template.getTemplateId());
         clearState();
         return "/forms/list";
     }

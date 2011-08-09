@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import javax.faces.component.UIData;
 
 @Component("formFieldHome")
-public class FormFieldHome {
+public class FormFieldHome{
 
     private FormTemplate template;
     private Field field;
