@@ -12,7 +12,7 @@
             <ui:repeat value="#{formHome.template.sections}" var="section">
                 <ui:repeat value="#{section.fields}" var="field">
                     <label for="#{field.id}">#{field.label}</label>
-                    <input type="text" id="#{field.id}" name="cs.#{field.id}" /><br/>
+                    <h:inputText value="#{formHome.entry.fields[field.id]}" /><br/>
                 </ui:repeat>
             </ui:repeat>
 

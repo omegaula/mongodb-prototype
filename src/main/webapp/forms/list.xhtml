@@ -7,14 +7,30 @@
     <ui:define name="content">
         <h1><h:outputText value="Entries for #{formHome.template.templateId} #{formHome.template.templateLabel}"/></h1>
         <h:form id="entryEditDeleteForm">
-            <h:dataTable value="#{formHome.forms}" var="v_form" styleClass="dataTable" rowClasses="odd even">
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Creator"/>
-                    </f:facet>
-                    <h:outputText value="#{v_form.createdBy}" />
-                </h:column>
-            </h:dataTable>
+            <table>
+                <thead>
+                <tr>
+                    <td>Creator</td>
+                <ui:repeat value="#{formHome.template.sections}" var="section">
+                    <ui:repeat value="#{section.fields}" var="field">
+                        <td>#{field.label}</td>
+                    </ui:repeat>
+                </ui:repeat>
+                </tr>
+                </thead>
+                <tbody>
+                <ui:repeat value="#{formHome.forms}" var="form">
+                    <tr>
+                    <td>#{form.createdBy}</td>
+                    <ui:repeat value="#{formHome.template.sections}" var="section">
+                    <ui:repeat value="#{section.fields}" var="field">
+                        <td>#{form.fields[field.id]}</td>
+                    </ui:repeat>
+                </ui:repeat>
+                    </tr>
+                </ui:repeat>
+                </tbody>
+            </table>
         </h:form>
 
         <h:form id="entryAddForm">

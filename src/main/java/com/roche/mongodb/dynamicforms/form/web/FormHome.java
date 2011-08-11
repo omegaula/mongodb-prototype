@@ -57,15 +57,7 @@ public class FormHome {
     }
 
     public String add() {
-        Map<String,String> parameterMap = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-        HashMap<String, String> newMap = new HashMap<String, String>();
-        for (Map.Entry<String, String> entry : parameterMap.entrySet()) {
-            if (entry.getKey().startsWith("cs.")) {
-                newMap.put(entry.getKey().substring(3), entry.getValue());
-            }
-        }
-        newMap.put("createdBy", entry.getCreatedBy());
-        mongoTemplate.save(newMap, template.getTemplateId());
+        mongoTemplate.save(entry, template.getTemplateId());
         clearState();
         return "/forms/list";
     }
