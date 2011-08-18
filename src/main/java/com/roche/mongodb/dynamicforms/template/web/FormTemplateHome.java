@@ -40,13 +40,13 @@ public class FormTemplateHome {
     public String save() {
         formTemplateRepo.save(template);
         clearView();
-        return "/home";
+        return "/home?faces-redirect=true";
     }
 
     public String delete(ObjectId id) {
         formTemplateRepo.delete(id);
         clearView();
-        return "/home";
+        return "/home?faces-redirect=true";
     }
 
     private void clearView() {

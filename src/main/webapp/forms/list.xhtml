@@ -11,11 +11,12 @@
                 <thead>
                 <tr>
                     <td>Creator</td>
-                <ui:repeat value="#{formHome.template.sections}" var="section">
-                    <ui:repeat value="#{section.fields}" var="field">
-                        <td>#{field.label}</td>
+                    <ui:repeat value="#{formHome.template.sections}" var="section">
+                        <ui:repeat value="#{section.fields}" var="field">
+                            <td>#{field.label}</td>
+                        </ui:repeat>
                     </ui:repeat>
-                </ui:repeat>
+                    <td>Action</td>
                 </tr>
                 </thead>
                 <tbody>
@@ -23,10 +24,11 @@
                     <tr>
                     <td>#{form.createdBy}</td>
                     <ui:repeat value="#{formHome.template.sections}" var="section">
-                    <ui:repeat value="#{section.fields}" var="field">
-                        <td>#{form.fields[field.id]}</td>
+                        <ui:repeat value="#{section.fields}" var="field">
+                            <td>#{form.fields[field.id]}</td>
+                        </ui:repeat>
                     </ui:repeat>
-                </ui:repeat>
+                    <td></td>
                     </tr>
                 </ui:repeat>
                 </tbody>

@@ -59,7 +59,7 @@ public class FormHome {
     public String add() {
         mongoTemplate.save(entry, template.getTemplateId());
         clearState();
-        return "/forms/list";
+        return "/forms/list?faces-redirect=true";
     }
 
     private void clearState() {
