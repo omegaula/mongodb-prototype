@@ -7,15 +7,16 @@
     <ui:define name="content">
         <h1><h:outputText value="Entries for #{formHome.template.templateId} #{formHome.template.templateLabel}"/></h1>
         <h:form id="entryEditDeleteForm">
-            <table>
+            <table class="dataTable">
                 <thead>
                 <tr>
-                    <td>Creator</td>
+                    <th>Creator</th>
                 <ui:repeat value="#{formHome.template.sections}" var="section">
                     <ui:repeat value="#{section.fields}" var="field">
-                        <td>#{field.label}</td>
+                        <th>#{field.label}</th>
                     </ui:repeat>
                 </ui:repeat>
+                    <th>Edit</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -27,6 +28,7 @@
                         <td>#{form.fields[field.id]}</td>
                     </ui:repeat>
                 </ui:repeat>
+                        <td><h:commandLink value="Edit" action="#{formHome.prepareEdit(form.id)}"/></td>
                     </tr>
                 </ui:repeat>
                 </tbody>

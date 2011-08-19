@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="content">
+		<h1><ui:insert name="title"/> </h1>
+		<h:form id="entryAddForm">
+            <h:inputText name="createdBy" value="#{formHome.entry.createdBy}" />
+
+            <ui:repeat value="#{formHome.template.sections}" var="section">
+                <ui:repeat value="#{section.fields}" var="field">
+                    <label for="#{field.id}">#{field.label}</label>
+                    <h:inputText value="#{formHome.entry.fields[field.id]}" /><br/>
+                </ui:repeat>
+            </ui:repeat>
+
+            <ui:insert name="submitButton"/>
+        </h:form>
+
+	</ui:define>
+</ui:composition>
