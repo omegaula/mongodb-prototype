@@ -1,0 +1,5 @@
+To start the application:
+- download and install MongoDb from http://www.mongodb.org/
+- run the database with default ports etc.
+- build the application using maven
+- run :)
