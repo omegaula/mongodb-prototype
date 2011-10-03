@@ -56,10 +56,15 @@ public class FormHome {
         return "/forms/add";
     }
 
-    public String add() {
+    public String save() {
         mongoTemplate.save(entry, template.getTemplateId());
         clearState();
         return "/forms/list?faces-redirect=true";
+    }
+
+    public String prepareEdit(ObjectId id) {
+        entry = mongoTemplate.findById(id, Form.class, template.getTemplateId());
+        return "/forms/edit";
     }
 
     private void clearState() {
