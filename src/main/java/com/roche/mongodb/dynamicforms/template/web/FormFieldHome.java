@@ -1,9 +1,6 @@
 package com.roche.mongodb.dynamicforms.template.web;
 
-import com.roche.mongodb.dynamicforms.template.model.Field;
-import com.roche.mongodb.dynamicforms.template.model.FormTemplate;
-import com.roche.mongodb.dynamicforms.template.model.FormTemplateRepository;
-import com.roche.mongodb.dynamicforms.template.model.Section;
+import com.roche.mongodb.dynamicforms.template.model.*;
 import org.apache.commons.collections15.CollectionUtils;
 import org.apache.commons.collections15.Predicate;
 import org.bson.types.ObjectId;
@@ -68,6 +65,10 @@ public class FormFieldHome{
         getSection().getFields().add(index + 1, field);
         formTemplateRepository.save(template);
         return "ajax";
+    }
+
+    public FieldType[] getTypes() {
+        return FieldType.values();
     }
 
     private int indexOfFieldWithId(String fieldId) {

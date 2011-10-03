@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	template="/WEB-INF/templates/template.xhtml">
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jstl/core"
+                template="/WEB-INF/templates/template.xhtml">
 	<ui:define name="content">
 		<h1>Add new entry</h1>
 		<h:form id="entryAddForm">
@@ -12,7 +12,15 @@
             <ui:repeat value="#{formHome.template.sections}" var="section">
                 <ui:repeat value="#{section.fields}" var="field">
                     <label for="#{field.id}">#{field.label}</label>
-                    <h:inputText value="#{formHome.entry.fields[field.id]}" /><br/>
+                    <h:panelGroup rendered="#{field.type == 'TEXT'}" >
+                        <h:inputText value="#{formHome.entry.fields[field.id]}" /><br/>
+                    </h:panelGroup>
+                    <h:panelGroup rendered="#{field.type == 'NUMERIC'}" >
+                        <h:inputText value="#{formHome.entry.fields[field.id]}" >
+                            <f:validateRegex pattern="[0-9]+" />
+                            <f:convertNumber integerOnly="true" />
+                        </h:inputText><h:messages layout="list" /><br/>
+                    </h:panelGroup>
                 </ui:repeat>
             </ui:repeat>
 

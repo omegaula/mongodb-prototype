@@ -47,6 +47,9 @@
                         <h:panelGroup layout="block" rendered="#{formFieldHome.fieldEditingInProgress}">
                             <h:inputText label="Internal id" value="#{formFieldHome.field.id}" />
                             <h:inputText label="Label" value="#{formFieldHome.field.label}" />
+                            <h:selectOneListbox label="Type" value="#{formFieldHome.field.type}" >
+                                <f:selectItems value="#{formFieldHome.types}"/>
+                            </h:selectOneListbox>
                             <h:commandButton value="Add" action="#{formFieldHome.addField}">
                                 <f:ajax render="fieldList" execute="footerBlock" />
                             </h:commandButton>
