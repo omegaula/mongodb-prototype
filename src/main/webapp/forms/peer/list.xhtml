@@ -2,11 +2,26 @@
 <!DOCTYPE html
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+      xml:lang="en" lang="en">
 <head>
     <title>PEER</title>
 </head>
 <body>
-    PEER
+    <h3>PEER</h3>
+    <h:form>
+        <table>
+            <thead><tr><th>Name</th></tr></thead>
+            <tbody>
+                <ui:repeat value="#{entriesCtrl.entries}" var="v_entry">
+                    <tr><td>#{v_entry.get('basic-name')}</td></tr>
+                </ui:repeat>
+            </tbody>
+        </table>
+        <h:commandLink value="Add new patient  entry" action="/forms/peer/add"/>
+    </h:form>
 </body>
 </html>
