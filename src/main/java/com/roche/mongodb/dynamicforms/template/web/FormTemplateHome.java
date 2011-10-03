@@ -36,7 +36,7 @@ public class FormTemplateHome {
     public String add() {
         formTemplateRepo.save(template);
         clearView();
-        return "/home";
+        return "/home?faces-redirect=true";
     }
 
     private void clearView() {

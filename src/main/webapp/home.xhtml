@@ -12,27 +12,13 @@
                     <f:facet name="header">
                         <h:outputText value="Template ID"/>
                     </f:facet>
-                    <h:outputText value="#{v_template.templateId}"/>
+                    <h:commandLink value="#{v_template.templateId}" action="#{entriesCtrl.list(v_template.templateId)}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="Template Label"/>
                     </f:facet>
                     <h:outputText value="#{v_template.templateLabel}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                    </f:facet>
-                    <h:commandLink value="Edit" action="#{formTemplateHome.prepareEdit}">
-                        <f:param name="template.id" value="#{v_template.id}"/>
-                    </h:commandLink>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                    </f:facet>
-                    <h:commandLink value="Delete" action="#{formTemplateHome.delete}">
-                        <f:param name="template.id" value="#{v_template.id}"/>
-                    </h:commandLink>
                 </h:column>
             </h:dataTable>
         </h:form>
