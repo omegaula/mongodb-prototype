@@ -2,22 +2,21 @@
 <!DOCTYPE html
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xml:lang="en" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:forms="http://java.sun.com/jsf/composite/components/forms"
+      xml:lang="en" lang="en">
 <head>
     <title>Add new Patient entry</title>
 </head>
 <body>
     <h:form>
-        <label for="entry.basic.name">Name</label>
-        <input type="text" name="entry.basic.name" id="entry.basic.name"/><br/>
-        <label for="entry.basic.desc">Description</label>
-        <input type="text" name="entry.basic.desc" id="entry.basic.desc"/><br/>
+        <forms:textEdit fieldName="basic.name" label="Name"/>
+        <forms:textEdit fieldName="basic.desc" label="Description"/>
         <hr/>
         Coordinator:<br/>
-        <label for="entry.coordinator.name">Name</label>
-        <input type="text" name="entry.coordinator.name" id="entry.coordinator.name"/><br/>
-        <label for="entry.coordinator.position">Position</label>
-        <input type="text" name="entry.coordinator.position" id="entry.coordinator.position"/><br/>
+        <forms:textEdit fieldName="coordinator.name" label="Name"/>
+        <forms:textEdit fieldName="coordinator.position" label="Position"/>
 
         <h:commandButton value="Add" action="#{entriesCtrl.save('peer')}"/>
     </h:form>

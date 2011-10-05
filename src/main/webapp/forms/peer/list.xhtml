@@ -14,10 +14,13 @@
     <h3>PEER</h3>
     <h:form>
         <table>
-            <thead><tr><th>Name</th></tr></thead>
+            <thead>
+            <tr><th>Name</th><th>&nbsp;</th></tr>
+            </thead>
             <tbody>
                 <ui:repeat value="#{entriesCtrl.entries}" var="v_entry">
-                    <tr><td>#{v_entry.get('basic').get('name')}</td></tr>
+                    <tr><td>#{v_entry.get('basic').get('name')}</td>
+                    <td><h:commandLink value="[edit]" action="#{entriesCtrl.prepareEdit('peer', v_entry.get('_id'))}"/></td></tr>
                 </ui:repeat>
             </tbody>
         </table>

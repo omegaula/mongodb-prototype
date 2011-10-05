@@ -6,11 +6,12 @@
 <composite:interface>
     <composite:attribute name="fieldName"/>
     <composite:attribute name="label"/>
+    <composite:attribute name="value" required="false"/>
 </composite:interface>
 
 <!-- IMPLEMENTATION -->
 <composite:implementation>
     <label for="entry.#{cc.attrs.fieldName}"><h:outputText value="#{cc.attrs.label}"/></label>
-    <input type="text" name="entry.#{cc.attrs.fieldName}" id="entry.#{cc.attrs.fieldName}"/><br/>
+    <input type="text" name="entry.#{cc.attrs.fieldName}" id="entry.#{cc.attrs.fieldName}" value="#{cc.attrs.value}"/><br/>
 </composite:implementation>
 </html>

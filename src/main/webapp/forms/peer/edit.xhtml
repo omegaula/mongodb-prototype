@@ -2,11 +2,23 @@
 <!DOCTYPE html
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:forms="http://java.sun.com/jsf/composite/components/forms"
+      xml:lang="en" lang="en">
 <head>
-    <title></title>
+    <title>Edit Patient entry</title>
 </head>
 <body>
+    <h:form>
+        <forms:textEdit fieldName="basic.name" label="Name" value="#{entriesCtrl.entry.get('basic').get('name')}"/>
+        <forms:textEdit fieldName="basic.desc" label="Description"  value="#{entriesCtrl.entry.get('basic').get('desc')}"/>
+        <hr/>
+        Coordinator:<br/>
+        <forms:textEdit fieldName="coordinator.name" label="Name" value="#{entriesCtrl.entry.get('coordinator').get('name')}"/>
+        <forms:textEdit fieldName="coordinator.position" label="Position" value="#{entriesCtrl.entry.get('coordinator').get('position')}"/>
 
+        <h:commandButton value="Add" action="#{entriesCtrl.save('peer', entriesCtrl.entry.get('_id'))}"/>
+    </h:form>
 </body>
 </html>
