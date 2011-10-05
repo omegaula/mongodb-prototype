@@ -1,5 +1,7 @@
 package com.roche.mongodb.dynamicforms.entries.converter;
 
+import com.google.common.base.Predicate;
+import com.google.common.collect.Maps;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 import org.springframework.stereotype.Service;
@@ -14,16 +16,31 @@ import java.util.Map;
 public class EntryConverter  {
 
     public DBObject convertFromRequestParams() {
-        Map<String,String[]> valuesMap = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterValuesMap();
-        DBObject entry = new BasicDBObject();
-        for (Iterator<Map.Entry<String, String[]>> it = valuesMap.entrySet().iterator(); it.hasNext(); ) {
-            Map.Entry<String, String[]> param = it.next();
-            if (param.getKey().startsWith("entry.")) {
-                String key = param.getKey().substring("entry.".length()).replace('.', '-');
-                entry.put(key, param.getValue()[0]);
-            }
-        }
+        DBObject entry = filterParameters();
         return entry;
+    }
+
+    private DBObject filterParameters() {
+        Map<String,String[]> valuesMap = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterValuesMap();
+        Map<String, String[]> entryValuesMap = Maps.filterEntries(valuesMap, entryValuesOnly());
+        return dbObjectFromValuesMap(entryValuesMap);
+    }
+
+    private DBObject dbObjectFromValuesMap(Map<String, String[]> valuesMap) {
+        DBObjectBuilder builder = new DBObjectBuilder("entry.");
+        for (Map.Entry<String, String[]> entry : valuesMap.entrySet()) {
+            builder.setValue(entry.getKey(), entry.getValue());
+        }
+        return builder.result();
+    }
+
+    private Predicate<? super Map.Entry<String, String[]>> entryValuesOnly() {
+        return new Predicate<Map.Entry<String, String[]>>() {
+            @Override
+            public boolean apply(Map.Entry<String, String[]> input) {
+                return input.getKey().startsWith("entry.");
+            }
+        };
     }
 
 }

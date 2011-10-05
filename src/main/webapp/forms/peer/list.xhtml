@@ -17,7 +17,7 @@
             <thead><tr><th>Name</th></tr></thead>
             <tbody>
                 <ui:repeat value="#{entriesCtrl.entries}" var="v_entry">
-                    <tr><td>#{v_entry.get('basic-name')}</td></tr>
+                    <tr><td>#{v_entry.get('basic').get('name')}</td></tr>
                 </ui:repeat>
             </tbody>
         </table>

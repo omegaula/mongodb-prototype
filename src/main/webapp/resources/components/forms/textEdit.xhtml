@@ -1,0 +1,16 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:composite="http://java.sun.com/jsf/composite">
+
+<!-- INTERFACE -->
+<composite:interface>
+    <composite:attribute name="fieldName"/>
+    <composite:attribute name="label"/>
+</composite:interface>
+
+<!-- IMPLEMENTATION -->
+<composite:implementation>
+    <label for="entry.#{cc.attrs.fieldName}"><h:outputText value="#{cc.attrs.label}"/></label>
+    <input type="text" name="entry.#{cc.attrs.fieldName}" id="entry.#{cc.attrs.fieldName}"/><br/>
+</composite:implementation>
+</html>
