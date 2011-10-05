@@ -11,12 +11,12 @@
 </head>
 <body>
     <h:form>
-        <forms:textEdit fieldName="basic.name" label="Name" value="#{entriesCtrl.entry.get('basic').get('name')}"/>
-        <forms:textEdit fieldName="basic.desc" label="Description"  value="#{entriesCtrl.entry.get('basic').get('desc')}"/>
+        <forms:textEdit fieldName="basic.name" label="Name"/>
+        <forms:textEdit fieldName="basic.desc" label="Description"/>
         <hr/>
         Coordinator:<br/>
-        <forms:textEdit fieldName="coordinator.name" label="Name" value="#{entriesCtrl.entry.get('coordinator').get('name')}"/>
-        <forms:textEdit fieldName="coordinator.position" label="Position" value="#{entriesCtrl.entry.get('coordinator').get('position')}"/>
+        <forms:textEdit fieldName="coordinator.name" label="Name"/>
+        <forms:textEdit fieldName="coordinator.position" label="Position"/>
 
         <h:commandButton value="Add" action="#{entriesCtrl.save('peer', entriesCtrl.entry.get('_id'))}"/>
     </h:form>

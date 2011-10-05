@@ -19,12 +19,12 @@
             </thead>
             <tbody>
                 <ui:repeat value="#{entriesCtrl.entries}" var="v_entry">
-                    <tr><td>#{v_entry.get('basic').get('name')}</td>
+                    <tr><td>#{v_entry.get('basic.name')}</td>
                     <td><h:commandLink value="[edit]" action="#{entriesCtrl.prepareEdit('peer', v_entry.get('_id'))}"/></td></tr>
                 </ui:repeat>
             </tbody>
         </table>
-        <h:commandLink value="Add new patient  entry" action="/forms/peer/add"/>
+        <h:commandLink value="Add new patient  entry" action="#{entriesCtrl.prepareAdd('peer')}"/>
     </h:form>
 </body>
 </html>
