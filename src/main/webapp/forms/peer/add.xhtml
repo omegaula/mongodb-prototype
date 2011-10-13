@@ -1,24 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:forms="http://java.sun.com/jsf/composite/components/forms"
-      xml:lang="en" lang="en">
-<head>
-    <title>Add new Patient entry</title>
-</head>
-<body>
-    <h:form>
-        <forms:textEdit fieldName="basic.name" label="Name"/>
-        <forms:textEdit fieldName="basic.desc" label="Description"/>
-        <hr/>
-        Coordinator:<br/>
-        <forms:textEdit fieldName="coordinator.name" label="Name"/>
-        <forms:textEdit fieldName="coordinator.position" label="Position"/>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:forms="http://java.sun.com/jsf/composite/components/forms"
+                template="/WEB-INF/templates/template.xhtml">
+    <ui:define name="content">
+        <h:form>
+            <forms:textEdit fieldName="basic.name" label="Name"/>
+            <forms:textEdit fieldName="basic.desc" label="Description"/>
+            <hr/>
+            Coordinator:<br/>
+            <forms:textEdit fieldName="coordinator.name" label="Name"/>
+            <forms:textEdit fieldName="coordinator.position" label="Position"/>
 
-        <h:commandButton value="Add" action="#{entriesCtrl.save('peer')}"/>
-    </h:form>
-</body>
-</html>
+            <h:commandButton value="Add" action="#{entriesCtrl.save('peer')}"/>
+        </h:form>
+    </ui:define>
+</ui:composition>
