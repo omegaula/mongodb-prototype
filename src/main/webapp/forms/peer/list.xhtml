@@ -10,6 +10,7 @@
                 <thead>
                 <tr>
                     <th>Name</th>
+                    <th>Funding</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -17,6 +18,7 @@
                 <ui:repeat value="#{entriesCtrl.entries}" var="v_entry">
                     <tr>
                         <td>#{v_entry.get('basic.name')}</td>
+                        <td>#{v_entry.get('financial.totalFunding')}</td>
                         <td><h:commandLink value="[edit]"
                                            action="#{entriesCtrl.prepareEdit('peer', v_entry.get('_id'))}"/></td>
                     </tr>

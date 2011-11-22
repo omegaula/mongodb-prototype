@@ -3,9 +3,7 @@ package com.roche.mongodb.dynamicforms.entries.converter;
 import com.mongodb.DBObject;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class SimplifiedQueryDBObjectTest {
 
@@ -21,5 +19,6 @@ public class SimplifiedQueryDBObjectTest {
         assertEquals("Mark", obj.get("partner.name"));
         assertTrue(obj.containsField("partner.name"));
         assertFalse(obj.containsField("mother.name"));
+        assertNull(obj.get("abc.xyz"));
     }
 }

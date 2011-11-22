@@ -3,7 +3,6 @@ package com.roche.mongodb.dynamicforms.entries.converter;
 import com.google.common.base.Splitter;
 import com.mongodb.DBObject;
 import org.bson.BSONObject;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.Iterator;
 import java.util.Map;
@@ -34,6 +33,9 @@ public class SimplifiedQueryDBObject implements DBObject {
             String fieldName = fieldNames.next();
             if (fieldNames.hasNext()) {
                 current = (DBObject) current.get(fieldName);
+                if (current == null) {
+                    return null;
+                }
                 continue;
             }
             return current.get(fieldName);

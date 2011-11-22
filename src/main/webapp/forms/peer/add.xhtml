@@ -5,13 +5,16 @@
                 xmlns:forms="http://java.sun.com/jsf/composite/components/forms"
                 template="/WEB-INF/templates/template.xhtml">
     <ui:define name="content">
-        <h:form>
+        <h:form styleClass="validated">
             <forms:textEdit fieldName="basic.name" label="Name"/>
             <forms:textEdit fieldName="basic.desc" label="Description"/>
             <hr/>
             Coordinator:<br/>
             <forms:textEdit fieldName="coordinator.name" label="Name"/>
             <forms:textEdit fieldName="coordinator.position" label="Position"/>
+            <hr/>
+            Financial:<br/>
+            <forms:numberEdit fieldName="financial.totalFunding" label="Funding"/>
 
             <h:commandButton value="Add" action="#{entriesCtrl.save('peer')}"/>
         </h:form>

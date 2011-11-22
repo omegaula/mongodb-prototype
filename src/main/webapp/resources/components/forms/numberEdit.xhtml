@@ -1,0 +1,20 @@
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:ui="http://java.sun.com/jsf/facelets"
+              xmlns:composite="http://java.sun.com/jsf/composite"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:f="http://java.sun.com/jsf/core">
+
+    <composite:interface>
+        <composite:attribute name="fieldName"/>
+        <composite:attribute name="label"/>
+    </composite:interface>
+
+    <composite:implementation>
+            <label for="entry.#{cc.attrs.fieldName}"><h:outputText value="#{cc.attrs.label}"/></label>
+            <input type="text" name="entry.#{cc.attrs.fieldName}" id="entry.#{cc.attrs.fieldName}"
+                   value="#{entriesCtrl.entry.get(cc.attrs.fieldName)}" class="validate number">
+            </input>
+        <br/>
+    </composite:implementation>
+
+</ui:component>
